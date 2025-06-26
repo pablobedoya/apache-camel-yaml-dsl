@@ -1,0 +1,35 @@
+- from:
+    uri: rest:post:/test-mqtt-custom-headers
+    steps:
+      - log:
+          message: "Testing MQTT WebSocket... Body: ${body}"
+      - doTry:
+          steps:
+            - to:
+                uri: paho-mqtt5:test
+                parameters:
+                  lazyStartProducer: true
+                  customWebSocketHeaders: "#mqttCustomHeaders"
+            - setBody:
+                constant: '{"status": "mqtt_sent", "message": "Sent to MQTT via WebSocket with custom headers"}'
+          doCatch:
+            - exception:
+                - java.lang.Exception
+              steps:
+                - log:
+                    message: "MQTT WebSocket connection failed: ${exception.message}"
+                - setBody:
+                    constant: '{"status": "mqtt_failed", "message": "MQTT WebSocket broker not available"}'
+          doFinally:
+            steps:
+              - setHeader:
+                  name: Content-Type
+                  constant: application/json
+
+- beans:
+    - name: mqttCustomHeaders
+      type: java.util.HashMap
+      properties:
+        authorization: Bearer abc123
+        clientId: my-client
+        xCustomHeader: meu-valor

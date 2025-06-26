@@ -1,0 +1,11 @@
+# Rota simples para testes
+- from:
+    uri: rest:post:/test-simple
+    steps:
+      - log:
+          message: "Testing simple route... Body: ${body}"
+      - setBody:
+          constant: '{"status": "success"}'
+      - setHeader:
+          name: Content-Type
+          constant: application/json
