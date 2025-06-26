@@ -7,9 +7,9 @@
       - doTry:
           steps:
             - to:
-                uri: paho-mqtt5:test?lazyStartProducer=true&customWebSocketHeaders=#myCustomHeaders
+                uri: paho-mqtt5:test?lazyStartProducer=true
             - setBody:
-                constant: '{"status": "mqtt_sent", "message": "Sent to MQTT via WebSocket with custom headers"}'
+                constant: '{"status": "mqtt_sent", "message": "Sent to MQTT via WebSocket"}'
           doCatch:
             - exception:
                 - java.lang.Exception

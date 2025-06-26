@@ -72,7 +72,7 @@ docker compose stop
 
 ```
 ├── docker-compose.yml          # Orquestração do Mosquitto
-├── mosquitto.conf             # Configuração MQTT com WebSocket
+├── mosquitto.conf              # Configuração MQTT com WebSocket
 ├── src/
 │   ├── main/
 │   │   ├── java/
