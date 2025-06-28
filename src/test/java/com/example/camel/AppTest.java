@@ -1,11 +1,9 @@
 package com.example.camel;
 
 import org.apache.camel.CamelContext;
-import org.apache.camel.main.Main;
 import org.apache.camel.test.junit5.CamelTestSupport;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
 
 public class AppTest extends CamelTestSupport {
 
